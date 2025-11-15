@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'
+            args '-u root:root' // opcional — evita problemas de permissão
+        }
+    }
+
     stages {
         stage('Build') {
             steps {
